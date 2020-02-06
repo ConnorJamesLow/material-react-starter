@@ -7,6 +7,7 @@ import { toggleDrawer } from 'redux/reducers/drawer';
 import { createDispatcher } from 'redux/store';
 import { hot } from 'react-hot-loader';
 import HoverShadowBox from 'app/styled/HoverShadowBox';
+import { logout } from 'redux/reducers/user';
 
 const useAsideStyles = makeStyles(theme => ({
   drawerCloseButton: {
@@ -60,7 +61,8 @@ const Nav: React.FC = () => {
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6">My Material-UI, Redux, Hot-Reloading, React-Router-Enabled, React Scripts Powered, TypeScript React App</Typography>
-              <Button className={navClasses.loginButton} color="inherit">{user.username || 'Sign In'}</Button>
+              <Button className={navClasses.loginButton} color="inherit"
+                onClick={() => dispatch(logout)}>Logout {user.username || 'Sign In'}</Button>
             </Toolbar>
           </AppBar>
         </HoverShadowBox>

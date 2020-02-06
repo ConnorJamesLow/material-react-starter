@@ -1,8 +1,5 @@
-
 import React from 'react'
 import { makeStyles } from '@material-ui/core';
-import Nav from 'app/template/nav';
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,13 +12,10 @@ const useStyles = makeStyles(theme => ({
 const Layout: React.FC = ({ children }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root} id="app-layout">
-      <Nav />
-      <main>
-        {children}
-      </main>
+    <div className={classes.root}>
+      {children}
     </div>
   )
 }
 
-export default Layout;
+export default Layout

@@ -1,9 +1,10 @@
 import React from 'react';
 import { CssBaseline, ThemeProvider, createMuiTheme } from '@material-ui/core';
 import { hot } from 'react-hot-loader';
-import Layout from 'app/template/Layout';
+import Main from 'app/template/Main';
 import { BrowserRouter } from 'react-router-dom';
 import { useRedux } from 'redux/reducers';
+import Login from 'app/views/Login';
 
 const App: React.FC = () => {
   // Couldn't get the return type with the default useSelector hook, so I made my own wrapper.
@@ -20,10 +21,9 @@ const App: React.FC = () => {
         <CssBaseline />
         {user.isLoggedIn
           ? (
-            <Layout>
-            </Layout>
+            <Main />
           ) : (
-            <div>Login required!</div>
+            <Login />
           )
         }
       </BrowserRouter>

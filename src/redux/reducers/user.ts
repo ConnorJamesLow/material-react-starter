@@ -18,6 +18,9 @@ export const logout = createAction<User, 'logout'>('logout');
 
 // Create the reducer (uh-durrr).
 export default createReducer<User>(defaultUser, builder => builder
-  .addCase(login, (state, action) => action.payload)
+  .addCase(login, (state, action) => ({
+    username: action.payload.username,
+    isLoggedIn: true
+  }))
   .addCase(logout, () => defaultUser)
 );
