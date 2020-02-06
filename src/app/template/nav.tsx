@@ -71,9 +71,11 @@ const Nav: React.FC = () => {
       </nav>
       <aside>
         <Drawer open={open} onClose={() => dispatch(toggleDrawer)} classes={{ paper: asideClasses.drawer }}>
-          <IconButton className={asideClasses.drawerCloseButton} onClick={() => dispatch(toggleDrawer)} >
-            <CloseIcon />
-          </IconButton>
+          <span className={asideClasses.drawerCloseButton} >
+            <IconButton onClick={() => dispatch(toggleDrawer)} >
+              <CloseIcon />
+            </IconButton>
+          </span>
           <List>
             <Divider />
             {Object.keys(options).map(k => (
