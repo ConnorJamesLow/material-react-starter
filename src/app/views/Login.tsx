@@ -53,7 +53,7 @@ const Login: React.FC = () => {
               </Grid>
               <Grid item>
                 <FormControl fullWidth>
-                  <TextField value={password} label="Password" variant="outlined" color="secondary"
+                  <TextField value={password} label="Password" variant="outlined" color="secondary" type="password"
                     onChange={({ target: { value } }) => setPassword(value)} />
                 </FormControl>
               </Grid>
