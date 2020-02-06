@@ -5,6 +5,7 @@ import HoverShadowBox from 'app/styled/HoverShadowBox';
 import { createDispatcher } from 'redux/store';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/reducers/user';
+import { hot } from 'react-hot-loader';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,9 +26,10 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none',
     '&:hover': {
       background: theme.palette.primary.light,
-    }
+    },
   },
 }));
+
 
 const Login: React.FC = () => {
   const classes = useStyles();
@@ -41,24 +43,24 @@ const Login: React.FC = () => {
           <div className={classes.formRoot}>
             <Grid container direction="column" spacing={2}>
               <Grid item>
-                <Typography variant="h4">Please Sign In</Typography>
+                <Typography variant="h4">Sign In</Typography>
               </Grid>
               <Grid item>
                 <FormControl fullWidth>
-                  <TextField value={username} label="Username" variant="outlined"
+                  <TextField value={username} label="Username" variant="outlined" color="secondary"
                     onChange={({ target: { value } }) => setUsername(value)} />
                 </FormControl>
               </Grid>
               <Grid item>
                 <FormControl fullWidth>
-                  <TextField value={password} label="Password" variant="outlined"
+                  <TextField value={password} label="Password" variant="outlined" color="secondary"
                     onChange={({ target: { value } }) => setPassword(value)} />
                 </FormControl>
               </Grid>
               <Grid item>
                 <Button variant="contained" color="primary" disableElevation
                   onClick={() => dispatch(login, { username, password })}>
-                  Sign In
+                  Go!
                 </Button>
               </Grid>
             </Grid>
@@ -69,4 +71,4 @@ const Login: React.FC = () => {
   )
 }
 
-export default Login
+export default hot(module)(Login);

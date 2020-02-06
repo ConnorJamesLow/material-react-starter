@@ -1,5 +1,5 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
-import { red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange } from '@material-ui/core/colors';
+import { grey, brown, blueGrey, red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange } from '@material-ui/core/colors';
 import { Color } from '@material-ui/core';
 import { PaletteOptions } from '@material-ui/core/styles/createPalette';
 
@@ -10,7 +10,7 @@ export const setSecondary = createAction<Color, 'set-secondary'>('set-secondary'
 const initial = {
   palette: {
     primary: amber,
-    secondary: blue,
+    secondary: grey,
   } as PaletteOptions,
   options: {
     red,
@@ -28,7 +28,10 @@ const initial = {
     yellow,
     amber,
     orange,
-    deepOrange
+    deepOrange,
+    blueGrey,
+    grey,
+    brown
   }
 };
 

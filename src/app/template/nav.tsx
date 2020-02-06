@@ -60,9 +60,9 @@ const Nav: React.FC = () => {
               <IconButton className={navClasses.menuButton} color="inherit" onClick={() => dispatch(toggleDrawer)}>
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6">My Material-UI, Redux, Hot-Reloading, React-Router-Enabled, React Scripts Powered, TypeScript React App</Typography>
+              <Typography variant="h6">Navigation!</Typography>
               <Button className={navClasses.loginButton} color="inherit"
-                onClick={() => dispatch(logout)}>Logout {user.username || 'Sign In'}</Button>
+                onClick={() => dispatch(logout)}>Logout {user.username || 'hackerman'}</Button>
             </Toolbar>
           </AppBar>
         </HoverShadowBox>

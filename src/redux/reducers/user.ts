@@ -3,6 +3,7 @@ import { createReducer, createAction } from '@reduxjs/toolkit';
 // Define some common constructs
 export interface User {
   username: string,
+  password?: string,
   isLoggedIn: boolean
 }
 
@@ -18,9 +19,9 @@ export const logout = createAction<User, 'logout'>('logout');
 
 // Create the reducer (uh-durrr).
 export default createReducer<User>(defaultUser, builder => builder
-  .addCase(login, (state, action) => ({
-    username: action.payload.username,
-    isLoggedIn: true
+  .addCase(login, (state, { payload: { username, password } }) => ({
+    username: username,
+    isLoggedIn: !!username && !!password
   }))
   .addCase(logout, () => defaultUser)
 );
