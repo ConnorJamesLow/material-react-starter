@@ -1,6 +1,6 @@
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button, makeStyles, Drawer, List, Divider } from '@material-ui/core'
-import { Menu as MenuIcon, Close as CloseIcon } from '@material-ui/icons';
+import { AppBar, Toolbar, IconButton, Typography, Button, makeStyles, Drawer, List, Divider, ListItem, ListItemIcon, ListItemText, Color } from '@material-ui/core'
+import { Menu as MenuIcon, Close as CloseIcon, Palette as PaletteIcon } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
 import { useRedux } from 'redux/reducers';
 import { toggleDrawer } from 'redux/reducers/drawer';
@@ -8,6 +8,7 @@ import { createDispatcher } from 'redux/store';
 import { hot } from 'react-hot-loader';
 import HoverShadowBox from 'app/styled/HoverShadowBox';
 import { logout } from 'redux/reducers/user';
+import { setPrimary } from 'redux/reducers/theme';
 
 const useAsideStyles = makeStyles(theme => ({
   drawerCloseButton: {
@@ -46,6 +47,7 @@ const Nav: React.FC = () => {
   // Data
   const user = useRedux(state => state.user);
   const open = useRedux(state => state.drawer.open);
+  const options = useRedux(state => state.theme.options);
 
   // Redux change dispatcher
   const dispatch = createDispatcher(useDispatch());
@@ -74,6 +76,17 @@ const Nav: React.FC = () => {
           </IconButton>
           <List>
             <Divider />
+            {Object.keys(options).map(k => (
+              // If someone knows a better way to loop through an object's properties in TS, please let me know.
+              <ListItem button onClick={() => { dispatch(setPrimary, (options as any)[k] as Color) }}>
+                <ListItemIcon>
+                  <PaletteIcon />
+                </ListItemIcon>
+                <ListItemText>
+                  {`${k.substr(0, 1).toUpperCase()}${k.substr(1).replace(/([A-Z])/g, ' $1')}`}
+                </ListItemText>
+              </ListItem>
+            ))}
           </List>
         </Drawer>
       </aside>
